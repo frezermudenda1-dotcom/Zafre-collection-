@@ -11,3 +11,6 @@ function addToCart() {
         popup.classList.remove("show");
     }, 1500);
 }
+function goToCart() {
+  window.location.href = "cart.html";
+}
