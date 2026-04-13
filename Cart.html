@@ -20,14 +20,62 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let cartList = document.getElementById("cart-items");
 let total = 0;
 
+// Group items by name
+let grouped = {};
+
 cart.forEach(item => {
-  let li = document.createElement("li");
-  li.textContent = item.name + " - K" + item.price;
-  cartList.appendChild(li);
-  total += item.price;
+  if (!grouped[item.name]) {
+    grouped[item.name] = { price: item.price, qty: 1 };
+  } else {
+    grouped[item.name].qty++;
+  }
 });
 
+// Display items
+for (let name in grouped) {
+  let item = grouped[name];
+
+  let li = document.createElement("li");
+
+  li.innerHTML = `
+    ${name} - K${item.price} 
+    <button onclick="decrease('${name}')">➖</button>
+    ${item.qty}
+    <button onclick="increase('${name}')">➕</button>
+    <button onclick="removeItem('${name}')">❌</button>
+  `;
+
+  cartList.appendChild(li);
+
+  total += item.price * item.qty;
+}
+
 document.getElementById("total").textContent = "Total: K" + total;
+
+// FUNCTIONS
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+}
+
+function increase(name) {
+  let item = cart.find(i => i.name === name);
+  cart.push(item);
+  saveCart();
+}
+
+function decrease(name) {
+  let index = cart.findIndex(i => i.name === name);
+  if (index !== -1) {
+    cart.splice(index, 1);
+  }
+  saveCart();
+}
+
+function removeItem(name) {
+  cart = cart.filter(i => i.name !== name);
+  saveCart();
+}
 
 function checkout() {
   alert("Order placed successfully!");
