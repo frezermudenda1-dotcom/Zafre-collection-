@@ -8,7 +8,7 @@ let cart = [];
 function addToCart(name, price) {
   cart.push({ name, price });
   updateCartCount();
-  showNotification("Added to cart");
+  
 }
 
 // 🔢 Update cart number
@@ -19,28 +19,6 @@ function updateCartCount() {
   }
 }
 
-// 🔔 Clean notification (no username)
-function showNotification(message) {
-  const note = document.createElement("div");
-  note.innerText = message;
-
-  note.style.position = "fixed";
-  note.style.bottom = "20px";
-  note.style.left = "50%";
-  note.style.transform = "translateX(-50%)";
-  note.style.background = "black";
-  note.style.color = "white";
-  note.style.padding = "12px 20px";
-  note.style.borderRadius = "10px";
-  note.style.fontSize = "14px";
-  note.style.zIndex = "1000";
-
-  document.body.appendChild(note);
-
-  setTimeout(() => {
-    note.remove();
-  }, 2000);
-}
 
 // 🛒 Open cart page
 function openCart() {
