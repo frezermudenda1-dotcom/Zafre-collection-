@@ -1,101 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Zafre Collection</title>
-    .product {
-  background: white;
-  border-radius: 15px;
-  padding: 15px;
-  width: 160px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
+  <meta charset="UTF-8">
+  <title>Zafre Collection</title>
 
-.product:hover {
-  transform: translateY(-5px);
-}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+    }
 
-.product img {
-  width: 100%;
-  border-radius: 10px;
-}
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: white;
+    }
 
-.product h3 {
-  margin: 10px 0 5px;
-}
+    .cart {
+      position: relative;
+      cursor: pointer;
+    }
 
-.product p {
-  color: gray;
-  margin-bottom: 10px;
-}
+    .cart span {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 3px 6px;
+      font-size: 12px;
+    }
 
-.product button {
-  background: black;
-  color: white;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  border-radius: 8px;
-}
     .products {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-    <link rel="stylesheet" href="style.css">
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      width: 160px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    button {
+      background: black;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <div style="display:flex; justify-content:space-between; align-items:center; padding:10px;">
-  <h1 style="letter-spacing:2px;">ZAFRE</h1>
+<div class="header">
+  <h2>ZAFRE</h2>
 
-  <div onclick="goToCart()" style="cursor:pointer; position:relative;">
+  <div class="cart" onclick="goToCart()">
     🛒
-    <span id="cart-count" style="
-      position:absolute;
-      top:-8px;
-      right:-10px;
-      background:red;
-      color:white;
-      border-radius:50%;
-      padding:3px 6px;
-      font-size:12px;
-    ">0</span>
+    <span id="cart-count">0</span>
   </div>
-    </div>
-    <div class="cart" onclick="goToCart()">🛒 <span id="cart-count">0</span></div>
-</header>
+</div>
 
-<section class="products">
+<div class="products">
 
-    <div class="product">
-        <img src="images (1).jpeg">
-        <h2>Street Cap</h2>
-        <p>K150</p>
-        <button onclick="addToCart('Street Cap',)">Add to Cart</button>
-    </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/150">
+    <h3>Street Cap</h3>
+    <p>K150</p>
+    <button onclick="addToCart('Street Cap', 150)">Add to Cart</button>
+  </div>
 
-    <div class="product">
-        <img src="images (2).jpeg">
-        <h2>White T-Shirt</h2>
-        <p>K200</p>
-        <button onclick="addToCart('White T-shirt',)">Add to Cart</button>
-    </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/150">
+    <h3>White T-Shirt</h3>
+    <p>K200</p>
+    <button onclick="addToCart('White T-Shirt', 200)">Add to Cart</button>
+  </div>
 
-    <div class="product">
-        <img src="images.jpeg">
-        <h2>Black Hoodie</h2>
-        <p>K350</p>
-        <button onclick="addToCart('Black Hoodie',)">Add to Cart</button>
-    </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/150">
+    <h3>Black Hoodie</h3>
+    <p>K350</p>
+    <button onclick="addToCart('Black Hoodie', 350)">Add to Cart</button>
+  </div>
 
-</section>
-<div id="popup" class="popup">Added to cart ✅</div>
-    function updateCartCount() {
+</div>
+
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({ name, price });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert("Added to cart");
+}
+
+function updateCartCount() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   document.getElementById("cart-count").innerText = cart.length;
 }
@@ -105,7 +133,7 @@ function goToCart() {
 }
 
 updateCartCount();
-<script src="script.js"></script>
+</script>
 
 </body>
 </html>
