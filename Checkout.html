@@ -1,60 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Checkout</title>
-
-  <style>
-    body {
-      font-family: Arial;
-      padding: 20px;
-      background: #f5f5f5;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .form {
-      max-width: 400px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background: black;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
 </head>
-<body>
+
+<body style="font-family:Arial; padding:20px;">
 
 <h1>Checkout</h1>
 
-<div class="form">
-  <input type="text" placeholder="Full Name">
-  <input type="text" placeholder="Address">
-  <input type="text" placeholder="Phone Number">
-  <input type="text" placeholder="City">
+<input placeholder="Name" style="width:100%; padding:10px;"><br><br>
+<input placeholder="Address" style="width:100%; padding:10px;"><br><br>
 
-  <button onclick="placeOrder()">Place Order</button>
-</div>
+<button onclick="placeOrder()" style="padding:12px; width:100%; background:black; color:white;">
+Place Order
+</button>
 
 <script>
 function placeOrder() {
-  alert("Order placed successfully!");
+  alert("Order placed!");
   localStorage.removeItem("cart");
   window.location.href = "index.html";
 }
