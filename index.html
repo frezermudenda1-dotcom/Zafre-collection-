@@ -2,13 +2,55 @@
 <html>
 <head>
     <title>Zafre Collection</title>
+    .product {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  width: 160px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product h3 {
+  margin: 10px 0 5px;
+}
+
+.product p {
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.product button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+}
+    .products {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <h1>Zafre Collection</h1>
+    <h1 style="text-align:center; letter-spacing:2px;">ZAFRE COLLECTION</h1>
     <div class="cart" onclick="goToCart()">🛒 <span id="cart-count">0</span></div>
 </header>
 
